@@ -35,7 +35,7 @@ Trong đề án này, em tập trung vào bốn nội dung chính. Thứ nhất 
 ## 5. Kịch bản và dữ liệu thực nghiệm (2:50 - 3:50)
 
 **Lời nói:**  
-Kịch bản thực nghiệm được xây dựng cho khu vực Thanh Xuân, Hà Nội. Mạng lưới đường được trích xuất từ OpenStreetMap và chuyển sang SUMO. Nhu cầu giao thông được xây dựng từ dữ liệu khảo sát UTM-Hanoi và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Cụ thể, xe máy được quy đổi 0,5 PCU, ô tô con 1,0 PCU và xe buýt 3,0 PCU. Ngoài ra, mô hình chuyển làn dạng sublane được bật cho xe máy để phản ánh tốt hơn đặc trưng giao thông hỗn hợp. Trong kịch bản này, môi trường đưa 41 bộ điều khiển đèn tín hiệu vào quá trình huấn luyện.
+Kịch bản thực nghiệm được xây dựng cho khu vực Thanh Xuân, Hà Nội. Mạng lưới đường được trích xuất từ OpenStreetMap và chuyển sang SUMO. Nhu cầu giao thông được xây dựng từ dữ liệu khảo sát UTM-Hanoi và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Cụ thể, xe máy được quy đổi 0,5 PCU, ô tô con 1,0 PCU và xe buýt 3,0 PCU. Ngoài ra, mô hình chuyển làn phụ được bật cho xe máy để phản ánh tốt hơn đặc trưng giao thông hỗn hợp. Trong kịch bản này, môi trường đưa 41 bộ điều khiển đèn tín hiệu vào quá trình huấn luyện.
 
 ---
 
@@ -77,7 +77,7 @@ Slide này mô tả vòng lặp huấn luyện. Mỗi lần mô phỏng bắt đ
 ## 11. Chỉ số đánh giá (8:30 - 9:15)
 
 **Lời nói:**  
-Đề án dùng bốn chỉ số. Số phương tiện hoàn thành hành trình phản ánh năng lực giải tỏa của mạng. Thời gian chờ trung bình phản ánh chất lượng di chuyển, nên thấp hơn là tốt hơn; tốc độ trung bình phản ánh mức độ thông thoáng, nên cao hơn thường là tốt hơn. Trong đề án, dịch chuyển cưỡng bức được xem là chỉ số hỗ trợ để theo dõi các tình huống bế tắc nghiêm trọng trong mô phỏng, vì nó còn chịu ảnh hưởng của hình học mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
+Đề án dùng bốn chỉ số. Số phương tiện hoàn thành hành trình phản ánh năng lực giải tỏa của mạng. Thời gian chờ trung bình phản ánh chất lượng di chuyển, nên thấp hơn là tốt hơn; tốc độ trung bình phản ánh mức độ thông thoáng, nên cao hơn thường là tốt hơn. Trong đề án, dịch chuyển cưỡng bức được xem là chỉ số hỗ trợ để theo dõi các tình huống tắc nghẽn nghiêm trọng trong mô phỏng, vì nó còn chịu ảnh hưởng của hình học mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
 
 ---
 
