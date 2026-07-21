@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quy trình huấn luyện</title>
+  <style>
+    :root {
+      --text: #272727;
+      --line: #5c6770;
+      --red: #bb2025;
+      --green: #2c6b58;
+      --blue: #315d96;
+      --orange: #c98516;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; background: transparent; }
+    svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    text { font-family: Arial, Helvetica, sans-serif; fill: var(--text); }
+    .outer-frame { fill: #f5f8fc; stroke: var(--blue); stroke-width: 2.5; stroke-dasharray: 10 6; }
+    .inner-frame { fill: #fff9f9; stroke: var(--red); stroke-width: 2; stroke-dasharray: 7 5; }
+    .process { stroke-width: 2; }
+    .process-start { fill: #edf3fb; stroke: var(--blue); }
+    .process-step { fill: #fbeeee; stroke: var(--red); }
+    .process-update { fill: #edf7f0; stroke: var(--green); }
+    .process-end { fill: #f6f0e6; stroke: #9a6a22; }
+    .decision { fill: #fff4db; stroke: var(--orange); stroke-width: 2; }
+    .flow-title { font-size: 19px; font-weight: 700; }
+    .flow-label { font-size: 15px; font-weight: 600; }
+    .flow-note { font-size: 13px; }
+    .branch-label { font-size: 13px; font-weight: 700; }
+  </style>
+</head>
+<body>
+  <svg viewBox="0 0 1200 470" role="img" aria-label="Flowchart vòng lặp thu thập dữ liệu và cập nhật PPO">
+    <defs>
+      <marker id="arrow-gray" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5c6770" /></marker>
+      <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#bb2025" /></marker>
+      <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#2c6b58" /></marker>
+      <marker id="arrow-blue" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#315d96" /></marker>
+    </defs>
+
+    <text class="flow-title" x="58" y="62" fill="#315d96">Thu thập dữ liệu và cập nhật chính sách</text>
+    <text class="flow-note" x="58" y="84">Mỗi bước quyết định kéo dài 5 giây mô phỏng</text>
+
+    <rect class="process process-start" x="55" y="175" width="125" height="62" rx="5" />
+    <text class="flow-title" x="118" y="200" text-anchor="middle">Bắt đầu</text>
+    <text class="flow-note" x="118" y="220" text-anchor="middle">reset SUMO</text>
+
+    <rect class="process process-step" x="215" y="165" width="145" height="82" rx="5" />
+    <text class="flow-label" x="288" y="192" text-anchor="middle">Trạng thái</text>
+    <text class="flow-note" x="288" y="212" text-anchor="middle">từ SUMO</text>
+    <text class="flow-note" x="288" y="230" text-anchor="middle">cho 41 tác tử</text>
+
+    <rect class="process process-step" x="395" y="165" width="165" height="82" rx="5" />
+    <text class="flow-label" x="478" y="192" text-anchor="middle">Quan sát và</text>
+    <text class="flow-label" x="478" y="210" text-anchor="middle">bộ lọc hành động</text>
+    <text class="flow-note" x="478" y="230" text-anchor="middle">theo từng tác tử</text>
+
+    <rect class="process process-step" x="595" y="165" width="145" height="82" rx="5" />
+    <text class="flow-label" x="668" y="192" text-anchor="middle">Chọn hành động</text>
+    <text class="flow-note" x="668" y="212" text-anchor="middle">cho từng tác tử</text>
+
+    <rect class="process process-step" x="775" y="165" width="165" height="82" rx="5" />
+    <text class="flow-label" x="858" y="192" text-anchor="middle">SUMO thực thi</text>
+    <text class="flow-note" x="858" y="212" text-anchor="middle">5 giây, phần thưởng</text>
+    <text class="flow-note" x="858" y="230" text-anchor="middle">lưu vào bộ đệm</text>
+
+    <path class="decision" d="M1020,151 L1090,206 L1020,261 L950,206 Z" />
+    <text class="flow-note" x="1020" y="189" text-anchor="middle">Đủ 128 bước</text>
+    <text class="flow-note" x="1020" y="207" text-anchor="middle">hoặc lần mô phỏng</text>
+    <text class="flow-note" x="1020" y="225" text-anchor="middle">kết thúc?</text>
+
+    <rect class="process process-update" x="930" y="300" width="180" height="62" rx="5" />
+    <text class="flow-title" x="1020" y="325" text-anchor="middle">GAE và PPO</text>
+    <text class="flow-note" x="1020" y="345" text-anchor="middle">cập nhật, xóa bộ đệm</text>
+
+    <path class="decision" d="M720,301 L790,355 L720,409 L650,355 Z" />
+    <text class="flow-label" x="720" y="347" text-anchor="middle">Lần mô phỏng</text>
+    <text class="flow-label" x="720" y="365" text-anchor="middle">kết thúc?</text>
+
+    <path class="decision" d="M465,301 L535,355 L465,409 L395,355 Z" />
+    <text class="flow-label" x="465" y="347" text-anchor="middle">Đủ N lần</text>
+    <text class="flow-label" x="465" y="365" text-anchor="middle">mô phỏng?</text>
+
+    <rect class="process process-end" x="1050" y="405" width="130" height="42" rx="5" />
+    <text class="flow-label" x="1115" y="431" text-anchor="middle">Mô hình cuối</text>
+
+    <path d="M180,206 L215,206" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <path d="M360,206 L395,206" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <path d="M560,206 L595,206" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <path d="M740,206 L775,206" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <path d="M940,206 L950,206" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+
+    <path d="M1020,261 L1020,280 Q1020,290 1005,290 L230,290 Q205,290 205,265 L205,155 Q205,145 215,145" fill="none" stroke="#bb2025" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#arrow-red)" />
+    <text class="branch-label" x="455" y="286" text-anchor="middle" fill="#9d1b20">Chưa: tiếp tục thu thập</text>
+
+    <path d="M1020,261 L1020,300" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <text class="branch-label" x="1040" y="284" fill="#5c6770">Có</text>
+
+    <path d="M930,331 L800,331 Q780,331 780,350" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <path d="M650,355 L565,355 Q545,355 535,355" fill="none" stroke="#5c6770" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <text class="branch-label" x="825" y="323" text-anchor="middle" fill="#5c6770">Kết thúc</text>
+
+    <path d="M720,301 L720,275 Q720,265 700,265 L585,265 Q570,265 570,250 L570,155 Q570,145 595,145" fill="none" stroke="#2c6b58" stroke-width="3" marker-end="url(#arrow-green)" />
+    <text class="branch-label" x="670" y="280" text-anchor="middle" fill="#24604e">Chưa kết thúc</text>
+
+    <path d="M395,355 L245,355 Q220,355 220,380 L220,430 Q220,445 195,445 L90,445 Q55,445 55,410 L55,247 Q55,237 65,237" fill="none" stroke="#315d96" stroke-width="3.2" stroke-dasharray="10 6" marker-end="url(#arrow-blue)" />
+    <text class="branch-label" x="235" y="437" text-anchor="middle" fill="#315d96">Chưa đủ → lần tiếp theo</text>
+
+    <path d="M535,355 L560,355 L560,390 L1015,390 Q1030,390 1030,405 L1030,426 L1050,426" fill="none" stroke="#9a6a22" stroke-width="2.5" marker-end="url(#arrow-gray)" />
+    <text class="branch-label" x="770" y="385" text-anchor="middle" fill="#9a6a22">Đủ</text>
+  </svg>
+</body>
+</html>

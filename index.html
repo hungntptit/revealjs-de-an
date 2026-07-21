@@ -108,7 +108,7 @@
 		}
 
 		/* Navigation & Slide Number */
-		.reveal .slide-number {
+		.reveal #content-slide-number {
 			font-family: var(--r-heading-font) !important;
 			font-size: 18px !important;
 			background-color: var(--ptit-red) !important;
@@ -128,7 +128,7 @@
 			z-index: 20;
 		}
 
-		.reveal .slide-number a {
+		.reveal #content-slide-number a {
 			color: white !important;
 			text-decoration: none;
 		}
@@ -515,7 +515,6 @@
 		.metrics-table tbody tr:last-child td {
 			border-bottom: 1px solid #7f8990;
 		}
-		}
 
 		.reveal .slides section.result-chart-slide .content-wrapper {
 			justify-content: center;
@@ -607,6 +606,226 @@
 			font-size: 0.9em;
 			font-weight: 700;
 			color: var(--ptit-red);
+		}
+
+		.policy-training-flow {
+			width: min(100%, 1080px);
+			align-self: center;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.episode-loop-container {
+			position: relative;
+			width: 100%;
+			box-sizing: border-box;
+			padding: 15px 180px 52px 100px;
+			border: 2px solid #315d96;
+			border-radius: 4px;
+			background: #f5f8fc;
+		}
+
+		.training-loop-arrows {
+			position: absolute;
+			inset: 0;
+			width: 100%;
+			height: 100%;
+			overflow: visible;
+			pointer-events: none;
+			z-index: 2;
+		}
+
+		.episode-loop-header,
+		.step-loop-container,
+		.policy-training-block.update {
+			position: relative;
+			z-index: 3;
+		}
+
+		.episode-loop-header {
+			text-align: center;
+		}
+
+		.episode-loop-header strong {
+			display: block;
+			margin-top: 3px;
+			font-family: var(--r-heading-font);
+			font-size: 0.63em;
+			color: #262626;
+		}
+
+		.episode-loop-header span {
+			display: block;
+			margin-top: 3px;
+			font-size: 0.45em;
+			color: #4d4d4d;
+		}
+
+		.step-loop-container {
+			box-sizing: border-box;
+			padding: 10px 16px 9px;
+			border: 1px dashed #bb2025;
+			border-radius: 4px;
+			background: #fff9f9;
+			text-align: center;
+		}
+
+		.step-loop-container strong {
+			display: block;
+			margin-top: 3px;
+			font-family: var(--r-heading-font);
+			font-size: 0.57em;
+			color: #262626;
+		}
+
+		.nested-loop-arrow {
+			height: 24px;
+			font-size: 0.8em;
+			line-height: 24px;
+			font-weight: 700;
+			text-align: center;
+			color: var(--ptit-red);
+		}
+
+		.step-repeat-note,
+		.episode-repeat-note {
+			margin-top: 7px;
+			font-size: 0.42em;
+			font-weight: 700;
+			color: #5d1012;
+			text-align: center;
+		}
+
+		.loop-arrow-label {
+			position: absolute;
+			z-index: 4;
+			font-size: 0.38em;
+			font-weight: 700;
+			line-height: 1.25;
+			text-align: center;
+		}
+
+		.inner-loop-label {
+			top: 138px;
+			right: 14px;
+			width: 150px;
+			font-size: 0.34em;
+			color: #9d1b20;
+		}
+
+		.update-return-label {
+			top: 278px;
+			right: 14px;
+			width: 150px;
+			font-size: 0.35em;
+			color: #24604e;
+		}
+
+		.outer-loop-label {
+			top: 192px;
+			left: 2px;
+			width: 82px;
+			font-size: 0.33em;
+			color: #315d96;
+		}
+
+		.completion-label {
+			bottom: 14px;
+			left: 36%;
+			width: 180px;
+			font-size: 0.35em;
+			color: #315d96;
+		}
+
+		.training-flowchart-frame {
+			width: 100%;
+			height: 475px;
+			align-self: center;
+			border: 0;
+			background: transparent;
+		}
+
+		.policy-training-block {
+			width: 100%;
+			min-height: 76px;
+			box-sizing: border-box;
+			padding: 12px 24px;
+			border: 1px solid #bfc8cf;
+			border-radius: 4px;
+			background: #f7fafb;
+			text-align: center;
+		}
+
+		.policy-training-block.episode {
+			border-color: #315d96;
+			background: #edf3fb;
+		}
+
+		.policy-training-block.step-loop {
+			border-color: #bb2025;
+			background: #fbeeee;
+		}
+
+		.policy-training-block.update {
+			border-color: #2c6b58;
+			background: #edf7f0;
+		}
+
+		.policy-flow-kicker {
+			font-family: var(--r-heading-font);
+			font-size: 0.43em;
+			font-weight: 700;
+			letter-spacing: 0;
+			text-transform: uppercase;
+			color: #5d1012;
+		}
+
+		.policy-training-block strong {
+			display: block;
+			margin-top: 3px;
+			font-family: var(--r-heading-font);
+			font-size: 0.61em;
+			color: #262626;
+		}
+
+		.policy-training-block .policy-flow-detail {
+			display: block;
+			margin-top: 4px;
+			font-size: 0.45em;
+			line-height: 1.25;
+			color: #4d4d4d;
+		}
+
+		.step-loop-chain {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 8px;
+			margin-top: 7px;
+			font-size: 0.45em;
+			font-weight: 600;
+			white-space: nowrap;
+			color: #303030;
+		}
+
+		.step-loop-chain b {
+			color: var(--ptit-red);
+		}
+
+		.policy-flow-down {
+			height: 32px;
+			font-size: 0.9em;
+			line-height: 32px;
+			font-weight: 700;
+			color: var(--ptit-red);
+		}
+
+		.policy-loop-note {
+			margin-top: 14px;
+			font-size: 0.48em;
+			font-weight: 700;
+			color: #5d1012;
 		}
 
 		.metrics-table {
@@ -782,11 +1001,11 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Điểm xuất phát của đề án là hạn chế của điều khiển đèn tín hiệu chu kỳ cố định khi lưu lượng
-						giao thông biến động theo thời gian. Trong bối cảnh Việt Nam, giao thông còn có đặc trưng hỗn
-						hợp với tỷ lệ xe máy cao và hành vi di chuyển linh hoạt. Vì vậy, đề án tập trung vào bài toán
-						điều khiển phối hợp nhiều nút giao và đánh giá các thuật toán MARL trên một kịch bản mô phỏng
-						được xây dựng cho khu vực Thanh Xuân, Hà Nội.
+							Điểm xuất phát của đề án là hạn chế của điều khiển đèn tín hiệu chu kỳ cố định khi lưu lượng
+							giao thông biến động theo thời gian. Trong bối cảnh Việt Nam, giao thông còn có đặc trưng hỗn
+							hợp với tỷ lệ xe máy cao và hành vi di chuyển linh hoạt. Các nút giao trong cùng mạng lưới cũng
+							ảnh hưởng lẫn nhau, nên tối ưu riêng từng nút chưa đủ. Vì vậy, đề án tập trung đánh giá MARL
+							trên kịch bản mô phỏng phản ánh giao thông hỗn hợp tại khu vực Thanh Xuân, Hà Nội.
 					</div>
 				</aside>
 			</section>
@@ -805,11 +1024,11 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Mục tiêu của đề án là xây dựng và đánh giá một quy trình điều khiển tín hiệu giao thông đa tác
-						tử
-						trên kịch bản Thanh Xuân UTM. Đóng góp của đề án không nằm ở việc đề xuất một thuật toán mới, mà
-						nằm ở việc xây dựng môi trường mô phỏng, đặc tả bài toán, triển khai bốn biến thể MARL và đánh
-						giá chúng trong cùng điều kiện thực nghiệm.
+							Đề án hướng đến bốn việc. Trước hết là xây dựng kịch bản Thanh Xuân UTM từ bản đồ và dữ liệu khảo
+							sát. Tiếp theo, đề án đặc tả môi trường đa tác tử trong SUMO, gồm quan sát cục bộ, hành động có
+							ràng buộc và hàm phần thưởng. Trên môi trường đó, em triển khai MAPPO, HAPPO, GAT-MAPPO và
+							GAT-HAPPO, rồi đánh giá đa hạt giống so với điều khiển cố định và Max-Pressure. Đóng góp nằm ở
+							quy trình thực nghiệm này, không phải ở việc đề xuất thuật toán mới.
 					</div>
 				</aside>
 			</section>
@@ -825,8 +1044,8 @@
 								<li><b>Nhu cầu giao thông:</b> từ UTM-Hanoi, điều chỉnh về mức 5.000 phương tiện/giờ.
 								</li>
 								<li><b>Thành phần phương tiện:</b> xe máy, ô tô con, xe buýt.</li>
-								<li><b>Số tác tử điều khiển:</b> 41 bộ điều khiển có nhiều hơn một giai đoạn xanh hợp
-									lệ.</li>
+								<li><b>Mô hình chuyển làn:</b> bật chuyển làn phụ cho xe máy.</li>
+								<li><b>Số tác tử điều khiển:</b> 41 bộ điều khiển đèn tín hiệu.</li>
 							</ul>
 						</div>
 						<figure class="slide-figure">
@@ -840,30 +1059,25 @@
 					<div style="font-size: 20px;">
 						Kịch bản thực nghiệm được xây dựng cho khu vực Thanh Xuân, Hà Nội. Mạng lưới đường được trích
 						xuất từ OpenStreetMap và chuyển sang SUMO. Nhu cầu giao thông được xây dựng từ dữ liệu UTM-Hanoi
-						và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Sau khi phân tích cấu hình chương trình đèn tín
-						hiệu, môi
-						trường xác định 41 bộ điều khiển có nhiều hơn một giai đoạn xanh hợp lệ và sử dụng các bộ điều
-						khiển này làm tác tử học.
+							và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Đây là dữ liệu khảo sát được dùng làm cơ sở xây dựng nhu cầu mô phỏng. Mô hình chuyển làn phụ được bật cho xe máy để phản ánh tốt hơn đặc trưng giao thông hỗn hợp. Sau khi phân tích cấu hình chương trình đèn tín hiệu, môi
+						trường đưa 41 bộ điều khiển đèn tín hiệu vào quá trình huấn luyện.
 					</div>
 				</aside>
 			</section>
 
 			<section data-auto-animate data-auto-animate-id="method">
-				<h2 data-id="header">Mô hình bài toán trong SUMO</h2>
+				<h2 data-id="header">Mô hình bài toán</h2>
 				<div class="content-wrapper">
 					<div class="two-col">
 						<div>
 							<ul>
 								<li><b>Mô hình:</b> trò chơi Markov hợp tác nhiều tác tử.</li>
-								<li><b>Quan sát cục bộ 8 chiều:</b> hàng đợi vào/ra, dòng xe, áp lực, thời gian chờ,
-									trạng thái pha
-									và khả năng chuyển pha.</li>
-								<li><b>Hành động:</b> giữ pha hiện tại hoặc yêu cầu chuyển sang giai đoạn xanh kế tiếp.
+								<li><b>Quan sát cơ sở 8 chiều:</b> hàng đợi vào, xe đang di chuyển vào, hàng đợi ra,
+									áp lực cục bộ, mức tăng thời gian chờ, giai đoạn xanh hiện tại, thời gian đã qua và khả năng
+									chuyển pha.</li>
+								<li><b>Với GAT:</b> thêm tỷ lệ số giai đoạn xanh, thành đầu vào 9 chiều.</li>
+								<li><b>Hành động:</b> duy trì giai đoạn xanh hiện tại hoặc yêu cầu chuyển sang giai đoạn xanh kế tiếp.
 								</li>
-								<li><b>Bộ lọc hành động:</b> chỉ cho phép hành động hợp lệ theo chu kỳ đèn và thời gian
-									xanh tối thiểu.</li>
-								<li><b>Phần thưởng:</b> kết hợp phạt áp lực cục bộ, hàng đợi dừng, thời gian chờ tăng
-									thêm và dịch chuyển cưỡng bức.</li>
 							</ul>
 						</div>
 						<figure class="slide-figure">
@@ -874,11 +1088,12 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Bài toán được mô hình hóa dưới dạng trò chơi Markov hợp tác. Sau mỗi 5 giây mô phỏng, môi
-						trường đọc trạng thái giao thông từ SUMO, tạo quan sát cục bộ cho từng tác tử, áp dụng bộ lọc
-						hành động, thực thi hành động và tính phần thưởng. Cơ chế lọc hành động bảo đảm tác tử không
-						chọn các lệnh chuyển pha không hợp lệ, còn hàm phần thưởng hướng tới giảm các đại lượng bất lợi
-						trong trạng thái giao thông.
+							Bài toán được mô hình hóa dưới dạng trò chơi Markov hợp tác. Sau mỗi 5 giây mô phỏng, môi trường
+							đọc trạng thái giao thông từ SUMO và tạo vector quan sát cơ sở 8 chiều cho từng tác tử, gồm thông
+							tin hàng đợi, xe đang di chuyển, áp lực, thời gian chờ và trạng thái giai đoạn xanh. Với các biến
+							thể GAT, môi trường bổ sung tỷ lệ số giai đoạn xanh, nên đầu vào có 9 chiều. Tác tử hoặc duy trì
+							giai đoạn xanh hiện tại, hoặc yêu cầu chuyển sang giai đoạn xanh kế tiếp. Slide sau trình bày phần
+							thưởng và ràng buộc khi thực thi hành động.
 					</div>
 				</aside>
 			</section>
@@ -897,13 +1112,11 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Hàm phần thưởng không nhằm tối ưu một chỉ số đơn lẻ mà phạt các trạng thái bất lợi gồm áp lực
-						cục bộ,
-						hàng đợi dừng, thời gian chờ tăng thêm và dịch chuyển cưỡng bức. Về hành động, tác tử luôn có
-						thể giữ
-						pha hiện tại; yêu cầu chuyển pha chỉ hợp lệ khi pha yêu cầu là pha xanh kế tiếp và thời gian
-						xanh tối thiểu
-						đã được thỏa mãn. Cơ chế này bảo đảm chính sách không tạo lệnh chuyển pha vi phạm chu kỳ đèn.
+							Hàm phần thưởng không tối ưu một chỉ số đơn lẻ mà phạt các trạng thái giao thông bất lợi, gồm áp
+							lực cục bộ, hàng đợi dừng, thời gian chờ tăng thêm và dịch chuyển cưỡng bức. Về hành động, tác
+							tử luôn có thể duy trì giai đoạn xanh hiện tại. Khi yêu cầu chuyển, môi trường kiểm tra thứ tự
+							giai đoạn xanh và thời gian xanh tối thiểu trước khi thực thi. Nhờ đó chính sách không tạo lệnh
+							điều khiển vi phạm chu kỳ đèn.
 					</div>
 				</aside>
 			</section>
@@ -948,7 +1161,7 @@
 				<aside class="notes">
 					<div style="font-size: 20px;">
 						Đề án so sánh sáu phương pháp. Hai phương pháp đối chứng là điều khiển cố định và Max-Pressure,
-						trong đó Max-Pressure là một đối chứng thích ứng mạnh. Bốn phương pháp học tăng cường là MAPPO,
+						trong đó Max-Pressure là một đối chứng thích ứng mạnh. Bốn phương pháp MARL là MAPPO,
 						HAPPO, GAT-MAPPO và GAT-HAPPO. Các phương pháp này khác nhau ở hai điểm chính: actor dùng chung
 						hay actor riêng, và có hay không sử dụng bộ mã hóa đồ thị GAT.
 					</div>
@@ -973,58 +1186,27 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Mỗi mô hình được huấn luyện trong 500 lần mô phỏng. Mỗi lần mô phỏng kéo dài 3.600 giây; với
-						bước quyết định 5 giây, mỗi lần mô phỏng gồm 720 bước quyết định. Như vậy, mỗi mô hình học tăng
-						cường được huấn luyện trên 360.000 bước quyết định. Sau huấn luyện, bản lưu mô hình cuối cùng
-						được dùng để đánh giá trên 10 hạt giống ngẫu nhiên.
+							Việc huấn luyện dùng kịch bản Thanh Xuân UTM ở mức nhu cầu 5.000 phương tiện mỗi giờ. Mỗi lần
+							mô phỏng kéo dài 3.600 giây; với bước quyết định 5 giây, mỗi lần có 720 bước. Mỗi mô hình được
+							huấn luyện trong 500 lần, tương ứng 360.000 bước quyết định. Sau đó, bản lưu mô hình cuối cùng
+							được đánh giá trên 10 hạt giống ngẫu nhiên.
 					</div>
 				</aside>
 			</section>
 
-			<section data-auto-animate data-auto-animate-id="protocol">
-				<h2 data-id="header">Luồng huấn luyện và đánh giá</h2>
+			<section class="training-loop-detail-slide" data-auto-animate data-auto-animate-id="training-flow-detail">
+				<h2 data-id="header">Quy trình huấn luyện</h2>
 				<div class="content-wrapper">
-					<div class="training-flow">
-						<div class="flow-phase">
-							<div class="flow-phase-label">Huấn luyện</div>
-							<div class="flow-steps">
-								<div class="flow-step training"><strong>SUMO</strong><span>Trạng thái giao thông</span>
-								</div>
-								<div class="flow-arrow">&#8594;</div>
-								<div class="flow-step training"><strong>Quan sát và bộ lọc</strong><span>41 tác tử, hành
-										động hợp lệ</span></div>
-								<div class="flow-arrow">&#8594;</div>
-								<div class="flow-step training"><strong>Chọn và thực thi hành động</strong><span>Chuyển
-										pha trong SUMO</span></div>
-								<div class="flow-arrow">&#8594;</div>
-								<div class="flow-step training"><strong>Dữ liệu tương tác, GAE và PPO</strong><span>Cập
-										nhật chính sách</span></div>
-							</div>
-						</div>
-						<div class="flow-phase">
-							<div class="flow-phase-label">Đánh giá</div>
-							<div class="flow-steps">
-								<div class="flow-step output"><strong>Bản lưu mô hình cuối cùng</strong><span>Trọng số
-										và cấu hình</span></div>
-								<div class="flow-arrow">&#8594;</div>
-								<div class="flow-step evaluation"><strong>Chạy 10 hạt giống</strong><span>Cùng điều kiện
-										mô phỏng</span></div>
-								<div class="flow-arrow">&#8594;</div>
-								<div class="flow-step output"><strong>Tổng hợp kết quả</strong><span>Trung bình và độ
-										lệch chuẩn</span></div>
-							</div>
-						</div>
-					</div>
+					<iframe class="training-flowchart-frame" src="flowcharts/training-loop-flowchart.html"
+						title="Flowchart vòng lặp thu thập dữ liệu và cập nhật PPO"></iframe>
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Trong huấn luyện, tại mỗi bước quyết định, SUMO cung cấp trạng thái giao thông; môi trường tạo
-						quan sát,
-						áp dụng bộ lọc hành động và thực thi hành động do chính sách chọn. Dữ liệu tương tác theo thời
-						gian được sử dụng
-						để tính GAE và cập nhật chính sách theo PPO. Sau 500 lần mô phỏng, bản lưu mô hình cuối cùng
-						được đánh giá trên 10 hạt giống;
-						các chỉ số được tổng hợp bằng trung bình cùng độ lệch chuẩn.
+							Trong mỗi bước, SUMO trả về trạng thái cho 41 tác tử. Môi trường tạo quan sát và bộ lọc hành động
+							theo từng tác tử; chính sách chọn hành động, sau đó SUMO thực thi 5 giây, tính phần thưởng và lưu
+							dữ liệu vào bộ đệm. Khi bộ đệm đủ 128 bước hoặc lần mô phỏng kết thúc, hệ thống tính GAE, cập
+							nhật PPO rồi xóa bộ đệm. Nếu lần mô phỏng chưa kết thúc, luồng quay lại bước quyết định; nếu đã
+							kết thúc và chưa đủ số lần huấn luyện đặt trước, hệ thống khởi tạo lần mô phỏng tiếp theo.
 					</div>
 				</aside>
 			</section>
@@ -1038,17 +1220,17 @@
 						</li>
 						<li><b>Tốc độ trung bình:</b> phản ánh mức độ thông thoáng; giá trị cao hơn thường là tốt hơn.
 						</li>
-						<li><b>Dịch chuyển cưỡng bức:</b> chỉ số hỗ trợ theo dõi trạng thái bế tắc nghiêm trọng trong mô
+							<li><b>Dịch chuyển cưỡng bức:</b> trong đề án, được xem là chỉ số hỗ trợ theo dõi trạng thái bế tắc nghiêm trọng trong mô
 							phỏng.</li>
 					</ul>
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Đề án dùng bốn chỉ số. Ba chỉ số vận hành chính là số phương tiện hoàn thành hành trình, thời
-						gian chờ
-						trung bình và tốc độ trung bình. Dịch chuyển cưỡng bức chỉ là chỉ số hỗ trợ, vì nó còn chịu ảnh
-						hưởng
-						của hình học mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
+							Đề án dùng bốn chỉ số. Số phương tiện hoàn thành hành trình phản ánh năng lực giải tỏa của mạng.
+							Thời gian chờ trung bình phản ánh chất lượng di chuyển, nên thấp hơn là tốt hơn; tốc độ trung bình
+							phản ánh mức độ thông thoáng, nên cao hơn thường là tốt hơn. Dịch chuyển cưỡng bức được xem là
+							chỉ số hỗ trợ theo dõi bế tắc nghiêm trọng trong mô phỏng, vì nó còn chịu ảnh hưởng của hình học
+							mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
 					</div>
 				</aside>
 			</section>
@@ -1117,7 +1299,7 @@
 						Bảng này tóm tắt kết quả trung bình và độ lệch chuẩn trên 10 hạt giống đánh giá. MAPPO đạt thời
 						gian chờ trung bình thấp nhất và tốc độ trung bình cao nhất. GAT-MAPPO đạt số phương tiện hoàn
 						thành hành trình cao nhất, nhưng mức chênh lệch so với MAPPO nhỏ. Số sự kiện dịch chuyển cưỡng
-						bức không cho thấy xu hướng cải thiện rõ ràng dưới các chính sách học tăng cường.
+						bức không cho thấy xu hướng cải thiện rõ ràng dưới các chính sách MARL.
 					</div>
 				</aside>
 			</section>
@@ -1134,16 +1316,16 @@
 						<li><b>HAPPO</b> gần như ngang với Max-Pressure; <b>GAT-HAPPO</b> không vượt MAPPO hoặc
 							GAT-MAPPO ở các chỉ số chính.</li>
 						<li><b>Dịch chuyển cưỡng bức</b> không cho thấy xu hướng cải thiện rõ ràng và chỉ được dùng như
-							chỉ số hỗ trợ.</li>
+							chỉ số hỗ trợ trong đề án.</li>
 					</ul>
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Kết quả cho thấy MAPPO và GAT-MAPPO là hai phương pháp nổi bật nhất trong kịch bản Thanh Xuân
-						UTM. Tuy nhiên, mỗi phương pháp mạnh ở một chỉ số khác nhau: MAPPO tốt hơn về thời gian chờ và
-						tốc độ trung bình, trong khi GAT-MAPPO cao nhất về số phương tiện hoàn thành hành trình.
-						Max-Pressure vẫn là một đối chứng thích ứng mạnh. Đồng thời, việc bổ sung GAT hoặc dùng actor
-						riêng không tự động bảo đảm cải thiện trên mọi chỉ số.
+						MAPPO đạt thời gian chờ trung bình thấp nhất và tốc độ trung bình cao nhất, còn GAT-MAPPO có
+						số phương tiện hoàn thành hành trình cao nhất nhưng chỉ nhỉnh hơn MAPPO 2,8 xe. Max-Pressure là
+						đối chứng thích ứng mạnh và tốt hơn điều khiển cố định ở ba chỉ số vận hành chính. HAPPO gần
+						như ngang với Max-Pressure, còn GAT-HAPPO không vượt MAPPO hoặc GAT-MAPPO ở các chỉ số chính.
+						Trong đề án, dịch chuyển cưỡng bức được xem là chỉ số hỗ trợ.
 					</div>
 				</aside>
 			</section>
@@ -1163,11 +1345,11 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Đề án hiện mới được kiểm chứng trong môi trường mô phỏng SUMO. Kết quả còn phụ thuộc vào chất
-						lượng mạng đường, dữ liệu nhu cầu và các giả định khi xây dựng kịch bản. Ngoài ra, thực nghiệm
-						mới tập trung vào một mức nhu cầu chính. Trong tương lai, nghiên cứu có thể mở rộng sang nhiều
-						mức nhu cầu, tăng số hạt giống đánh giá và cải thiện dữ liệu đầu vào để tăng độ tin cậy của kết
-						quả.
+							Đề án hiện mới được kiểm chứng trong môi trường mô phỏng SUMO, chưa có kiểm chứng ngoài thực địa.
+							Kết quả còn phụ thuộc vào chất lượng mạng đường, dữ liệu khảo sát và các giả định mô phỏng. Thực
+							nghiệm mới tập trung vào một mức nhu cầu chính là 5.000 phương tiện mỗi giờ, trong khi dịch chuyển
+							cưỡng bức còn dao động và chưa được cải thiện rõ ràng. Hướng tiếp theo là mở rộng mức nhu cầu,
+							tăng số hạt giống và cải thiện dữ liệu đầu vào.
 					</div>
 				</aside>
 			</section>
@@ -1188,11 +1370,11 @@
 				</div>
 				<aside class="notes">
 					<div style="font-size: 20px;">
-						Tóm lại, đề án đã xây dựng được một quy trình mô phỏng, huấn luyện và đánh giá các phương pháp
-						điều khiển tín hiệu giao thông đa tác tử trên kịch bản Thanh Xuân UTM. Kết quả cho thấy MAPPO và
-						GAT-MAPPO là hai phương pháp có kết quả tốt nhất ở các chỉ số vận hành chính. Tuy nhiên, không
-						có phương pháp nào vượt trội trên toàn bộ tiêu chí, và các biến thể GAT không luôn cải thiện so
-						với biến thể không dùng GAT. Vì vậy, kết quả cần được diễn giải thận trọng theo từng chỉ số.
+							Tóm lại, đề án đã xây dựng quy trình mô phỏng, huấn luyện và đánh giá điều khiển tín hiệu giao
+							thông đa tác tử. Kịch bản Thanh Xuân UTM cho phép đánh giá các phương pháp trong bối cảnh giao
+							thông hỗn hợp tại Hà Nội. Theo ba chỉ số vận hành chính, MAPPO và GAT-MAPPO nổi bật nhất trong
+							nhóm phương pháp được đánh giá. Tuy vậy, không có phương pháp nào vượt trội trên toàn bộ chỉ số,
+							và GAT không luôn cải thiện so với biến thể không dùng GAT.
 					</div>
 				</aside>
 			</section>
@@ -1219,6 +1401,7 @@
 				</aside>
 			</section>
 		</div>
+		<div id="content-slide-number" class="slide-number" aria-label="Số trang trình bày"></div>
 	</div>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
@@ -1235,7 +1418,7 @@
 			margin: 0.0, /* No margin for full bleed backgrounds */
 			width: 1280, /* Standardize width/height for consistent absolute positioning */
 			height: 720,
-			slideNumber: 'c/t', /* Standard linear numbering "1 / n" */
+			slideNumber: false,
 
 			/* 
 			   TRANSITION VARIANTS TO TRY:
@@ -1265,7 +1448,7 @@
 			const hLogo = document.querySelector('.model-header-logo');
 			const fLogos = document.querySelector('.model-footer-logos');
 			const fLine = document.querySelector('.model-footer-line');
-			const sNum = document.querySelector('.slide-number');
+			const sNum = document.getElementById('content-slide-number');
 			const controls = document.querySelector('.reveal .controls');
 			const progress = document.querySelector('.reveal .progress');
 
@@ -1297,15 +1480,29 @@
 			}
 		}
 
+		function updateContentSlideNumber() {
+			const currentSlide = Reveal.getCurrentSlide();
+			const counter = document.getElementById('content-slide-number');
+			if (!currentSlide || !counter) return;
+
+			const contentSlides = Array.from(document.querySelectorAll('.reveal > .slides > section'))
+				.filter(slide => !slide.classList.contains('title-slide') && !slide.classList.contains('end-slide'));
+			const currentIndex = contentSlides.indexOf(currentSlide);
+
+			counter.textContent = currentIndex >= 0 ? `${currentIndex + 1} / ${contentSlides.length}` : '';
+		}
+
 		let lastIndexH = 0;
 
 		Reveal.on('ready', event => {
 			updateGlobalElements();
+			updateContentSlideNumber();
 		});
 
 		Reveal.on('slidechanged', event => {
 			// Update global elements visibility
 			updateGlobalElements();
+			updateContentSlideNumber();
 
 			// Handle Animation Direction
 			const revealEl = document.querySelector('.reveal');
