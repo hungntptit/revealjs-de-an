@@ -21,6 +21,11 @@ Trạng thái là thông tin giao thông mà SUMO cung cấp cho môi trường.
 **Quan sát 8 chiều gồm gì?**  
 Gồm hàng đợi đầu vào `q_in`, dòng xe đầu vào `m_in`, hàng đợi đầu ra `q_out`, áp lực `pressure`, mức tăng thời gian chờ `delta_wait`, pha hiện tại đã chuẩn hóa `phase_norm`, thời gian pha đã chuẩn hóa `elapsed_norm` và khả năng chuyển pha `can_switch`.
 
+**PCU là gì?**  
+PCU, hay đơn vị xe con quy đổi, dùng để quy đổi các loại phương tiện khác nhau về cùng một đơn vị đo. Nhờ đó, hàng đợi và áp lực giao thông phản ánh tải trọng dòng xe hỗn hợp thay vì chỉ đếm số lượng xe.
+
+Trong đề án, xe máy được quy đổi là `0,5` PCU, ô tô con là `1,0` PCU và xe buýt là `3,0` PCU. Vì vậy, một xe buýt được tính có ảnh hưởng lớn hơn xe máy khi tính hàng đợi, dòng xe và áp lực cục bộ.
+
 **Áp lực giao thông là gì?**  
 Đây là đại lượng phản ánh mất cân bằng giữa nhu cầu đi vào và khả năng thoát ra ở khu vực nút giao. Áp lực cao cho thấy nguy cơ tích tụ phương tiện, nên được đưa vào quan sát và phần thưởng.
 

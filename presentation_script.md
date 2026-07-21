@@ -24,19 +24,19 @@ Bài trình bày của em gồm bốn phần chính: bối cảnh nghiên cứu 
 
 ## 4. Mục tiêu và đóng góp (2:00 - 2:50)
 **Lời nói:**  
-Đề án hướng đến bốn việc. Trước hết là xây dựng kịch bản Thanh Xuân UTM từ bản đồ và dữ liệu khảo sát. Tiếp theo, đề án đặc tả môi trường đa tác tử trong SUMO, gồm quan sát cục bộ, hành động có ràng buộc và hàm phần thưởng. Trên môi trường đó, em triển khai MAPPO, HAPPO, GAT-MAPPO và GAT-HAPPO, rồi đánh giá đa hạt giống so với điều khiển cố định và Max-Pressure. Đóng góp nằm ở quy trình thực nghiệm này, không phải ở việc đề xuất thuật toán mới.
+Trong đề án này, em tập trung vào bốn nội dung chính. Thứ nhất là xây dựng kịch bản Thanh Xuân UTM từ dữ liệu bản đồ và dữ liệu khảo sát. Thứ hai là đặc tả môi trường điều khiển đa tác tử trong SUMO, bao gồm quan sát cục bộ, hành động có ràng buộc và hàm phần thưởng. Trên môi trường đó, em triển khai bốn thuật toán gồm MAPPO, HAPPO, GAT-MAPPO và GAT-HAPPO. Cuối cùng, các thuật toán được đánh giá trên nhiều hạt giống và so sánh với điều khiển cố định cũng như Max-Pressure. Đóng góp chính của đề án nằm ở quy trình thực nghiệm này, không phải ở việc đề xuất một thuật toán mới.
 
 ---
 
 ## 5. Kịch bản và dữ liệu thực nghiệm (2:50 - 3:50)
 **Lời nói:**  
-Kịch bản thực nghiệm được xây dựng cho khu vực Thanh Xuân, Hà Nội. Mạng lưới đường được trích xuất từ OpenStreetMap và chuyển sang SUMO. Nhu cầu giao thông được xây dựng từ dữ liệu khảo sát UTM-Hanoi và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Dữ liệu này là cơ sở xây dựng nhu cầu cho mô phỏng. Mô hình chuyển làn phụ được bật cho xe máy để phản ánh tốt hơn đặc trưng giao thông hỗn hợp. Môi trường đưa 41 bộ điều khiển đèn tín hiệu vào quá trình huấn luyện.
+Kịch bản thực nghiệm được xây dựng cho khu vực Thanh Xuân, Hà Nội. Mạng lưới đường được trích xuất từ OpenStreetMap và chuyển sang SUMO. Nhu cầu giao thông được xây dựng từ dữ liệu khảo sát UTM-Hanoi và điều chỉnh về mức 5.000 phương tiện mỗi giờ. Xe máy, ô tô con và xe buýt được quy đổi theo hệ số PCU lần lượt là 0,5, 1,0 và 3,0. Ngoài ra, mô hình chuyển làn phụ được bật cho xe máy để phản ánh tốt hơn đặc trưng giao thông hỗn hợp. Trong kịch bản này, môi trường đưa 41 bộ điều khiển đèn tín hiệu vào quá trình huấn luyện.
 
 ---
 
 ## 6. Mô hình bài toán (3:50 - 4:50)
 **Lời nói:**  
-Bài toán được mô hình hóa dưới dạng trò chơi Markov hợp tác. Sau mỗi 5 giây mô phỏng, môi trường đọc trạng thái giao thông từ SUMO và tạo vector quan sát cơ sở 8 chiều cho từng tác tử, gồm thông tin hàng đợi, xe đang di chuyển, áp lực, thời gian chờ và trạng thái giai đoạn xanh. Với các biến thể GAT, môi trường bổ sung tỷ lệ số giai đoạn xanh, nên đầu vào có 9 chiều. Tác tử hoặc duy trì giai đoạn xanh hiện tại, hoặc yêu cầu chuyển sang giai đoạn xanh kế tiếp. Slide sau trình bày phần thưởng và ràng buộc khi thực thi hành động.
+Bài toán được mô hình hóa dưới dạng trò chơi Markov hợp tác. Sau mỗi 5 giây mô phỏng, môi trường đọc trạng thái giao thông từ SUMO và tạo vector quan sát cho từng tác tử. Vector quan sát cơ sở gồm 8 thành phần, như hàng đợi, số xe đang di chuyển, áp lực giao thông, thời gian chờ và trạng thái giai đoạn xanh hiện tại. Với các biến thể dùng GAT, đầu vào được bổ sung thêm một đặc trưng về số giai đoạn xanh, nên có 9 chiều. Tác tử có thể duy trì giai đoạn xanh hiện tại hoặc yêu cầu chuyển sang giai đoạn xanh kế tiếp. Slide sau trình bày rõ hơn phần thưởng và ràng buộc khi thực thi hành động.
 
 ---
 
@@ -60,13 +60,13 @@ Việc huấn luyện dùng kịch bản Thanh Xuân UTM ở mức nhu cầu 5.0
 
 ## 10. Quy trình huấn luyện (7:40 - 8:30)
 **Lời nói:**  
-Trong mỗi bước, SUMO trả về trạng thái cho 41 tác tử. Môi trường tạo quan sát và bộ lọc hành động theo từng tác tử; chính sách chọn hành động, sau đó SUMO thực thi 5 giây, tính phần thưởng và lưu dữ liệu vào bộ đệm. Khi bộ đệm đủ 128 bước hoặc lần mô phỏng kết thúc, hệ thống tính GAE, cập nhật PPO rồi xóa bộ đệm. Nếu lần mô phỏng chưa kết thúc, luồng quay lại bước quyết định; nếu đã kết thúc và chưa đủ số lần huấn luyện đặt trước, hệ thống khởi tạo lần mô phỏng tiếp theo.
+Slide này mô tả riêng luồng huấn luyện. Trong mỗi bước quyết định, SUMO cung cấp trạng thái giao thông cho môi trường. Từ đó, môi trường tạo quan sát cho 41 tác tử và áp dụng bộ lọc để loại các hành động không hợp lệ. Chính sách sau đó chọn hành động, SUMO thực thi trong 5 giây mô phỏng, rồi môi trường tính phần thưởng và lưu dữ liệu vào bộ đệm. Khi bộ đệm đủ 128 bước, hoặc khi một lần mô phỏng kết thúc, hệ thống tính lợi thế bằng GAE và cập nhật chính sách bằng PPO. Quy trình này được lặp lại qua các lần mô phỏng cho đến khi hoàn thành quá trình huấn luyện.
 
 ---
 
 ## 11. Chỉ số đánh giá (8:30 - 9:15)
 **Lời nói:**  
-Đề án dùng bốn chỉ số. Số phương tiện hoàn thành hành trình phản ánh năng lực giải tỏa của mạng. Thời gian chờ trung bình phản ánh chất lượng di chuyển, nên thấp hơn là tốt hơn; tốc độ trung bình phản ánh mức độ thông thoáng, nên cao hơn thường là tốt hơn. Dịch chuyển cưỡng bức được xem là chỉ số hỗ trợ theo dõi bế tắc nghiêm trọng trong mô phỏng, vì nó còn chịu ảnh hưởng của hình học mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
+Đề án dùng bốn chỉ số. Số phương tiện hoàn thành hành trình phản ánh năng lực giải tỏa của mạng. Thời gian chờ trung bình phản ánh chất lượng di chuyển, nên thấp hơn là tốt hơn; tốc độ trung bình phản ánh mức độ thông thoáng, nên cao hơn thường là tốt hơn. Dịch chuyển cưỡng bức trong đề án được xem là chỉ số hỗ trợ theo dõi bế tắc nghiêm trọng trong mô phỏng, vì nó còn chịu ảnh hưởng của hình học mạng đường, cấu hình mô phỏng và dao động giữa các hạt giống.
 
 ---
 
@@ -78,7 +78,7 @@ Bảng này tóm tắt kết quả trung bình và độ lệch chuẩn trên 10
 
 ## 13. Thảo luận kết quả (10:30 - 11:30)
 **Lời nói:**  
-MAPPO đạt thời gian chờ trung bình thấp nhất và tốc độ trung bình cao nhất, còn GAT-MAPPO có số phương tiện hoàn thành hành trình cao nhất nhưng chỉ nhỉnh hơn MAPPO 2,8 xe. Max-Pressure là đối chứng thích ứng mạnh và tốt hơn điều khiển cố định ở ba chỉ số vận hành chính. HAPPO gần như ngang với Max-Pressure, còn GAT-HAPPO không vượt MAPPO hoặc GAT-MAPPO ở các chỉ số chính. Trong đề án, dịch chuyển cưỡng bức được xem là chỉ số hỗ trợ.
+MAPPO đạt thời gian chờ trung bình thấp nhất và tốc độ trung bình cao nhất. GAT-MAPPO đạt số phương tiện hoàn thành hành trình cao nhất, nhưng chỉ nhỉnh hơn MAPPO 2,8 xe. Max-Pressure là đối chứng thích ứng mạnh và tốt hơn điều khiển cố định ở ba chỉ số vận hành chính. Trong khi đó, HAPPO cho kết quả gần với Max-Pressure, còn GAT-HAPPO chưa vượt được MAPPO hoặc GAT-MAPPO ở các chỉ số chính. Vì vậy, không phải cứ dùng actor riêng hoặc bổ sung GAT là kết quả sẽ cải thiện đồng đều.
 
 ---
 
@@ -90,4 +90,4 @@ MAPPO đạt thời gian chờ trung bình thấp nhất và tốc độ trung b
 
 ## 15. Kết luận (12:30 - 13:30)
 **Lời nói:**  
-Tóm lại, đề án đã xây dựng quy trình mô phỏng, huấn luyện và đánh giá điều khiển tín hiệu giao thông đa tác tử. Kịch bản Thanh Xuân UTM cho phép đánh giá các phương pháp trong bối cảnh giao thông hỗn hợp tại Hà Nội. Theo ba chỉ số vận hành chính, MAPPO và GAT-MAPPO nổi bật nhất trong nhóm phương pháp được đánh giá. Tuy vậy, không có phương pháp nào vượt trội trên toàn bộ chỉ số, và GAT không luôn cải thiện so với biến thể không dùng GAT.
+Tóm lại, đề án đã xây dựng được quy trình mô phỏng, huấn luyện và đánh giá cho bài toán điều khiển tín hiệu giao thông đa tác tử. Kịch bản Thanh Xuân UTM cho phép đánh giá các phương pháp trong bối cảnh giao thông hỗn hợp tại Hà Nội. Xét theo ba chỉ số vận hành chính, MAPPO và GAT-MAPPO là hai phương pháp nổi bật nhất trong nhóm được đánh giá. Tuy nhiên, không có phương pháp nào tốt nhất trên toàn bộ chỉ số, và việc bổ sung GAT không phải lúc nào cũng cải thiện kết quả so với biến thể không dùng GAT.
